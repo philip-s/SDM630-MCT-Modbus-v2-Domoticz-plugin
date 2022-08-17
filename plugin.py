@@ -36,7 +36,7 @@
             </options>
         </param>
         <param field="Mode4" label="Offset Total Active Energy (kWh)" width="120px" required="true" default="0"/>
-        <param field="Mode5" label="Minutes between update" width="120px" required="true" default="60"/>
+        <param field="Mode5" label="Minutes between update" width="120px" required="true" default="1"/>
         <param field="Mode6" label="Debug" width="120px">
             <options>
                 <option label="True" value="Debug"/>
