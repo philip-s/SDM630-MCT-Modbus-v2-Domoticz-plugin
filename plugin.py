@@ -319,11 +319,11 @@ def CreateDevicesUsed():
         Domoticz.Device(Name="Voltage L3", Unit=_UNIT_VOLTAGE_L3, Type=0xF3,Subtype=0x8,Options={"Custom": "0;V"},Used=1).Create()
 
     if (_UNIT_CURRENT_L1 not in Devices):
-        Domoticz.Device(Name="Current L1", Unit=_UNIT_CURRENT_L1, TypeName="Custom", Options={"Custom": "0;A"}, Image=Images[_IMAGE].ID, Image=Images[_IMAGE].ID, Used=1).Create()
+        Domoticz.Device(Name="Current L1", Unit=_UNIT_CURRENT_L1, TypeName="Custom", Options={"Custom": "0;A"}, Image=Images[_IMAGE].ID, Used=1).Create()
     if (_UNIT_CURRENT_L2 not in Devices):
-        Domoticz.Device(Name="Current L2", Unit=_UNIT_CURRENT_L2, TypeName="Custom", Options={"Custom": "0;A"}, Image=Images[_IMAGE].ID, Image=Images[_IMAGE].ID, Used=1).Create()
+        Domoticz.Device(Name="Current L2", Unit=_UNIT_CURRENT_L2, TypeName="Custom", Options={"Custom": "0;A"}, Image=Images[_IMAGE].ID, Used=1).Create()
     if (_UNIT_CURRENT_L3 not in Devices):
-        Domoticz.Device(Name="Current L3", Unit=_UNIT_CURRENT_L3, TypeName="Custom", Options={"Custom": "0;A"}, Image=Images[_IMAGE].ID, Image=Images[_IMAGE].ID, Used=1).Create()
+        Domoticz.Device(Name="Current L3", Unit=_UNIT_CURRENT_L3, TypeName="Custom", Options={"Custom": "0;A"}, Image=Images[_IMAGE].ID, Used=1).Create()
 
     if (_UNIT_TOTALSYSTEMPOWER not in Devices):
         Domoticz.Device(Name="Total System Power", Unit=_UNIT_TOTALSYSTEMPOWER, TypeName="Custom", Options={"Custom": "0;W"}, Image=Images[_IMAGE].ID, Used=1).Create()
