@@ -92,6 +92,8 @@ _UNIT_TOTALREACTIVEENERGY = 20
 _UNIT_TOTALIMPORTACTIVEENERGY = 21
 _UNIT_TOTALEXPORTACTIVEENERGY = 22
 
+_UNIT_NET_KWH = 23
+
 #DEFAULT IMAGE
 _NO_IMAGE_UPDATE = -1
 _IMAGE = "SDM120"
@@ -224,6 +226,7 @@ class BasePlugin:
             ReadModbus(client, "TotalReactiveEnergy",  0x0158, _UNIT_TOTALREACTIVEENERGY)                	    #kvarh
             ReadModbus(client, "TotalImportActiveEnergy",  0x0500, _UNIT_TOTALIMPORTACTIVEENERGY)               #Watts
             ReadModbus(client, "TotalExportActiveEnergy",  0x0502, _UNIT_TOTALEXPORTACTIVEENERGY)               #Watts
+            ReadModbus(client, "NetkWh",  0x018C, _UNIT_NET_KWH)                                                #Watts
 
             # Run again following the period in the settings
             self.runAgain = _MINUTE*int(Parameters["Mode5"])
@@ -311,11 +314,11 @@ def CreateDevicesUsed():
         Domoticz.Device(Name="Voltage L3", Unit=_UNIT_VOLTAGE_L3, Type=0xF3,Subtype=0x8,Options={"Custom": "0;V"},Used=1).Create()
 
     if (_UNIT_CURRENT_L1 not in Devices):
-        Domoticz.Device(Name="Current L1", Unit=_UNIT_CURRENT_L1, TypeName="Custom", Options={"Custom": "0;A"}, Image=Images[_IMAGE].ID, Used=1).Create()
+        Domoticz.Device(Name="Current L1", Unit=_UNIT_CURRENT_L1, Type=0xF3, SubType=0x17, Options={"Custom": "0;A"}, Used=1).Create()
     if (_UNIT_CURRENT_L2 not in Devices):
-        Domoticz.Device(Name="Current L2", Unit=_UNIT_CURRENT_L2, TypeName="Custom", Options={"Custom": "0;A"}, Image=Images[_IMAGE].ID, Used=1).Create()
+        Domoticz.Device(Name="Current L2", Unit=_UNIT_CURRENT_L2, Type=0xF3, SubType=0x17, Options={"Custom": "0;A"}, Used=1).Create()
     if (_UNIT_CURRENT_L3 not in Devices):
-        Domoticz.Device(Name="Current L3", Unit=_UNIT_CURRENT_L3, TypeName="Custom", Options={"Custom": "0;A"}, Image=Images[_IMAGE].ID, Used=1).Create()
+        Domoticz.Device(Name="Current L3", Unit=_UNIT_CURRENT_L3, Type=0xF3, SubType=0x17, Options={"Custom": "0;A"}, Used=1).Create()
 
     if (_UNIT_TOTALACTIVEPOWER not in Devices):
         Domoticz.Device(Name="Total Active Power", Unit=_UNIT_TOTALACTIVEPOWER, TypeName="Custom", Options={"Custom": "0;Watt"}, Image=Images[_IMAGE].ID, Used=1).Create()
@@ -337,6 +340,9 @@ def CreateDevicesUsed():
 
     if (_UNIT_TOTALEXPORTACTIVEENERGY not in Devices):
         Domoticz.Device(Name="Total Export Active Energy", Unit=_UNIT_TOTALEXPORTACTIVEENERGY, TypeName="Usage", Options={"Custom": "0;W"}, Used=1).Create()
+        
+     if (_UNIT_NET_KWH not in Devices):
+        Domoticz.Device(Name="Net Kwh (Import-Export)", Unit=_UNIT_Net_KWH, TypeName="Custom", Options={"Custom": "0;kWh"}, Used=1).Create()
 
 #CREATE ALL THE DEVICES (NOT USED)
 def CreateDevicesNotUsed():
