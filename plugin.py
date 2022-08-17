@@ -89,6 +89,8 @@ _UNIT_FREQUENCY = 18
 _UNIT_TOTALACTIVEENERGY = 19
 _UNIT_TOTALREACTIVEENERGY = 20
 
+_UNIT_TOTALIMPORTACTIVEENERGY = 21
+
 #DEFAULT IMAGE
 _NO_IMAGE_UPDATE = -1
 _IMAGE = "SDM120"
@@ -211,14 +213,15 @@ class BasePlugin:
             ReadModbus(client, "Power_Factor_L2",         0x0020, _UNIT_POWERFACTOR_L2)                        #-
             ReadModbus(client, "Power_Factor_L3",         0x0022, _UNIT_POWERFACTOR_L3)                        #-
             ReadModbus(client, "Frequency",            	  0x0046, _UNIT_FREQUENCY)                             #Hz
-#            ReadModbus(client, "Total_Active_Electricity_Power",     0x0100, _UNIT_TOTALACTIVEPOWER)                          #kWh
-#            ReadModbus(client, "Total_Reactive_Electricity_Power",   0x0400, _UNIT_TOTALREACTIVEPOWER)                          #kvarh
-#            ReadModbus(client, "ImportActiveEnergy",   0x0048, _UNIT_IMPORTACTIVEENERGY)                 	#kWh
-#            ReadModbus(client, "ExportActiveEnergy",   0x004A, _UNIT_EXPORTACTIVEENERGY)                 	#kWh
-#            ReadModbus(client, "ImportReactiveEnergy", 0x004C, _UNIT_IMPORTREACTIVEENERGY)               	#kvarh
-#            ReadModbus(client, "ExportReactiveEnergy", 0x004E, _UNIT_EXPORTREACTIVEENERGY)               	#kvarh
-            ReadModbus(client, "TotalActiveEnergy",    0x0156, _UNIT_TOTALACTIVEENERGY, self.Offset)     	#kWh
-            ReadModbus(client, "TotalReactiveEnergy",  0x0158, _UNIT_TOTALREACTIVEENERGY)                	#kvarh
+#            ReadModbus(client, "Total_Active_Electricity_Power",     0x0100, _UNIT_TOTALACTIVEPOWER)           #Wh
+#            ReadModbus(client, "Total_Reactive_Electricity_Power",   0x0400, _UNIT_TOTALREACTIVEPOWER)         #kvarh
+#            ReadModbus(client, "ImportActiveEnergy",   0x0048, _UNIT_IMPORTACTIVEENERGY)                 	    #kWh
+#            ReadModbus(client, "ExportActiveEnergy",   0x004A, _UNIT_EXPORTACTIVEENERGY)                 	    #kWh
+#            ReadModbus(client, "ImportReactiveEnergy", 0x004C, _UNIT_IMPORTREACTIVEENERGY)               	    #kvarh
+#            ReadModbus(client, "ExportReactiveEnergy", 0x004E, _UNIT_EXPORTREACTIVEENERGY)               	    #kvarh
+            ReadModbus(client, "TotalActiveEnergy",    0x0156, _UNIT_TOTALACTIVEENERGY, self.Offset)     	    #kWh
+            ReadModbus(client, "TotalReactiveEnergy",  0x0158, _UNIT_TOTALREACTIVEENERGY)                	    #kvarh
+            ReadModbus(client, "TotalImportActiveEnergy",  0x0500, _UNIT_TOTALIMPORTACTIVEENERGY)               #Watts
 
             # Run again following the period in the settings
             self.runAgain = _MINUTE*int(Parameters["Mode5"])
@@ -326,6 +329,9 @@ def CreateDevicesUsed():
 
     if (_UNIT_TOTALACTIVEENERGY not in Devices):
         Domoticz.Device(Name="Total Active Energy", Unit=_UNIT_TOTALACTIVEENERGY, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=1).Create()
+        
+        if (_UNIT_TOTALIMPORTACTIVEENERGY not in Devices):
+        Domoticz.Device(Name="Total Import Active Energy", Unit=_UNIT_TOTIMPORTALACTIVEENERGY, TypeName="Custom", Options={"Custom": "0;W"}, Image=Images[_IMAGE].ID, Used=1).Create()
 
 #CREATE ALL THE DEVICES (NOT USED)
 def CreateDevicesNotUsed():
