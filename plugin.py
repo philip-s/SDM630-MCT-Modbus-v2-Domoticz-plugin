@@ -13,7 +13,7 @@
 # commands to change (not implemented in this plugin).
 #
 """
-<plugin key="SDM72D-M_V2" name="Eastron SD72 3-phase Energy Meter" author="Filip Demaertelaere (adapted by Filip Sobstel)" version="1.0.0">
+<plugin key="SDM72D-M_V2" name="Eastron SDM72D Modbus V2 Energy Meter" author="Filip Demaertelaere and adapted by Filip Sobstel" version="1.0.0">
     <params>
         <param field="SerialPort" label="Serial Port" width="120px" required="true"/>
         <param field="Mode1" label="Slave Unit ID" width="120px" required="true" default="1"/>
@@ -347,7 +347,7 @@ def CreateDevicesUsed():
         Domoticz.Device(Name="Total Export Active Energy", Unit=_UNIT_TOTALEXPORTACTIVEENERGY, TypeName="Usage", Options={"Custom": "0;W"}, Used=1).Create()
     
     if (_UNIT_NET_KWH not in Devices):
-        Domoticz.Device(Name="Net Kwh Import-Export", Unit=_UNIT_NET_KWH, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=1).Create()
+        Domoticz.Device(Name="Net Kwh Import-Export", Unit=_UNIT_NET_KWH, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=0).Create()
         
     if (_UNIT_IMPORTENERGY not in Devices):
         Domoticz.Device(Name="Import Energy", Unit=_UNIT_IMPORTENERGY, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=1).Create()
@@ -364,14 +364,14 @@ def CreateDevicesNotUsed():
         Domoticz.Device(Name="Total Reactive Power", Unit=_UNIT_TOTALREACTIVEPOWER, TypeName="Custom", Options={"Custom": "0;KVar"}, Image=Images[_IMAGE].ID, Used=1).Create()
 
     if (_UNIT_REACTIVEPOWER_L1 not in Devices):
-        Domoticz.Device(Name="Reactive Power L1", Unit=_UNIT_REACTIVEPOWER_L1, TypeName="Custom", Options={"Custom": "0;Var"}, Image=Images[_IMAGE].ID, Used=1).Create()
+        Domoticz.Device(Name="Reactive Power L1", Unit=_UNIT_REACTIVEPOWER_L1, TypeName="Custom", Options={"Custom": "0;Var"}, Image=Images[_IMAGE].ID, Used=0).Create()
     if (_UNIT_REACTIVEPOWER_L2 not in Devices):
-        Domoticz.Device(Name="Reactive Power L2", Unit=_UNIT_REACTIVEPOWER_L2, TypeName="Custom", Options={"Custom": "0;Var"}, Image=Images[_IMAGE].ID, Used=1).Create()
+        Domoticz.Device(Name="Reactive Power L2", Unit=_UNIT_REACTIVEPOWER_L2, TypeName="Custom", Options={"Custom": "0;Var"}, Image=Images[_IMAGE].ID, Used=0).Create()
     if (_UNIT_REACTIVEPOWER_L3 not in Devices):
-        Domoticz.Device(Name="Reactive Power L3", Unit=_UNIT_REACTIVEPOWER_L3, TypeName="Custom", Options={"Custom": "0;Var"}, Image=Images[_IMAGE].ID, Used=1).Create()
+        Domoticz.Device(Name="Reactive Power L3", Unit=_UNIT_REACTIVEPOWER_L3, TypeName="Custom", Options={"Custom": "0;Var"}, Image=Images[_IMAGE].ID, Used=0).Create()
 
     if (_UNIT_TOTALREACTIVEENERGY not in Devices):
-        Domoticz.Device(Name="Total Reactive Energy", Unit=_UNIT_TOTALREACTIVEENERGY, TypeName="Custom", Options={"Custom": "0; kVArh"}, Image=Images[_IMAGE].ID, Used=1).Create()
+        Domoticz.Device(Name="Total Reactive Energy", Unit=_UNIT_TOTALREACTIVEENERGY, TypeName="Custom", Options={"Custom": "0; kVArh"}, Image=Images[_IMAGE].ID, Used=0).Create()
 
     if (_UNIT_POWERFACTOR_L1 not in Devices):
         Domoticz.Device(Name="Power factor L1", Unit=_UNIT_POWERFACTOR_L1, TypeName="Custom", Options={"Custom": "0;"}, Image=Images[_IMAGE].ID, Used=0).Create()
@@ -379,15 +379,6 @@ def CreateDevicesNotUsed():
         Domoticz.Device(Name="Power factor L2", Unit=_UNIT_POWERFACTOR_L2, TypeName="Custom", Options={"Custom": "0;"}, Image=Images[_IMAGE].ID, Used=0).Create()
     if (_UNIT_POWERFACTOR_L3 not in Devices):
         Domoticz.Device(Name="Power factor L3", Unit=_UNIT_POWERFACTOR_L3, TypeName="Custom", Options={"Custom": "0;"}, Image=Images[_IMAGE].ID, Used=0).Create()
-
-#    if (_UNIT_IMPORTACTIVEENERGY not in Devices):
-#        Domoticz.Device(Name="Import Active Energy", Unit=_UNIT_IMPORTACTIVEENERGY, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=0).Create()
-#    if (_UNIT_EXPORTACTIVEENERGY not in Devices):
-#        Domoticz.Device(Name="Export Active Energy", Unit=_UNIT_EXPORTACTIVEENERGY, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=0).Create()
-#    if (_UNIT_IMPORTREACTIVEENERGY not in Devices):
-#        Domoticz.Device(Name="Import Reactive Energy", Unit=_UNIT_IMPORTREACTIVEENERGY, TypeName="Custom", Options={"Custom": "0; kVArh"}, Image=Images[_IMAGE].ID, Used=0).Create()
-#    if (_UNIT_EXPORTREACTIVEENERGY not in Devices):
-#        Domoticz.Device(Name="Export Reactive Energy", Unit=_UNIT_EXPORTREACTIVEENERGY, TypeName="Custom", Options={"Custom": "0; kVArh"}, Image=Images[_IMAGE].ID, Used=0).Create()
 
 #READ THE MODBUS INFORMATION
 def ReadModbus(client, StrData, Address, Unit, Offset=0): 
