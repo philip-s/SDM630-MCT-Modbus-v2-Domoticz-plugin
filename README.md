@@ -30,7 +30,7 @@ sudo reboot
 1. Clone repository into your domoticz plugins folder
 ```
 cd ~/domoticz/plugins
-git clone https://github.com/philip-s/SDM72D-Modbus-v2-Domoticz-plugin.git
+git clone https://github.com/philip-s/SDM72D-Modbus-v2-Domoticz-plugin_v2.git
 ```
 2. Restart domoticz:
 ```
@@ -45,7 +45,7 @@ Hint: The default interval of one minute is usually enough precise for most of t
 5. Go to devices tab, there you will find all of grid parameters as devices. Add do domoticz the one you need using red arrow (usually not all of them are necessary). By default the main ones are already set to be visible.
 ## Updating
 ```
-cd ~/domoticz/plugins/SDM72D-Modbus-v2-Domoticz-plugin/
+cd ~/domoticz/plugins/SDM72D-Modbus-v2-Domoticz-plugin_v2/
 git pull
 ```
 Tested on domoticz v2020.2 (v1) and 2021.1 (v2)
