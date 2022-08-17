@@ -66,7 +66,7 @@ _UNIT_CURRENT_L1 = 4
 _UNIT_CURRENT_L2 = 5
 _UNIT_CURRENT_L3 = 6
 
-_UNIT_TOTALACTIVEPOWER = 7
+_UNIT_TOTSYSTEMPOWER = 7
 _UNIT_ACTIVEPOWER_L1 = 8
 _UNIT_ACTIVEPOWER_L2 = 9
 _UNIT_ACTIVEPOWER_L3 = 10
@@ -206,7 +206,7 @@ class BasePlugin:
             ReadModbus(client, "Current_L1",              0x0006, _UNIT_CURRENT_L1)                            #Amps
             ReadModbus(client, "Current_L2",              0x0008, _UNIT_CURRENT_L2)                            #Amps
             ReadModbus(client, "Current_L3",              0x000A, _UNIT_CURRENT_L3)                            #Amps
-            ReadModbus(client, "Total_Active_Power",      0x0034, _UNIT_TOTALACTIVEPOWER)                      #Watts
+            ReadModbus(client, "Total_System_Power",      0x0034, _UNIT_TOTALSYSTEMPOWER)                      #Watts
             ReadModbus(client, "Active_Power_L1",      	  0x000C, _UNIT_ACTIVEPOWER_L1)                        #Watts
             ReadModbus(client, "Active_Power_L2",      	  0x000E, _UNIT_ACTIVEPOWER_L2)                        #Watts
             ReadModbus(client, "Active_Power_L2",      	  0x0010, _UNIT_ACTIVEPOWER_L3)                        #Watts
@@ -325,8 +325,8 @@ def CreateDevicesUsed():
     if (_UNIT_CURRENT_L3 not in Devices):
         Domoticz.Device(Name="Current L3", Unit=_UNIT_CURRENT_L3, TypeName="Custom", Options={"Custom": "0;A"}, Image=Images[_IMAGE].ID, Used=1).Create()
 
-    if (_UNIT_TOTALACTIVEPOWER not in Devices):
-        Domoticz.Device(Name="Total Active Power", Unit=_UNIT_TOTALACTIVEPOWER, TypeName="Custom", Options={"Custom": "0;Watt"}, Image=Images[_IMAGE].ID, Used=1).Create()
+    if (_UNIT_TOTALSYSTEMPOWER not in Devices):
+        Domoticz.Device(Name="Total System Power", Unit=_UNIT_TOTALSYSTEMPOWER, TypeName="Usage", Options={"Custom": "0;W"}, Used=1).Create()
     if (_UNIT_ACTIVEPOWER_L1 not in Devices):
         Domoticz.Device(Name="Active Power L1", Unit=_UNIT_ACTIVEPOWER_L1, TypeName="Usage", Options={"Custom": "0;W"}, Used=1).Create()
     if (_UNIT_ACTIVEPOWER_L2 not in Devices):
