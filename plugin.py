@@ -330,8 +330,8 @@ def CreateDevicesUsed():
     if (_UNIT_TOTALACTIVEENERGY not in Devices):
         Domoticz.Device(Name="Total Active Energy", Unit=_UNIT_TOTALACTIVEENERGY, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=1).Create()
         
-        if (_UNIT_TOTALIMPORTACTIVEENERGY not in Devices):
-        Domoticz.Device(Name="Total Import Active Energy", Unit=_UNIT_TOTALIMPORTACTIVEENERGY, TypeName="Custom", Options={"Custom": "0;W"}, Image=Images[_IMAGE].ID, Used=1).Create()
+    if (_UNIT_TOTALIMPORTACTIVEENERGY not in Devices):
+        Domoticz.Device(Name="Total Import Active Energy", Unit=_UNIT_TOTALIMPORTACTIVEENERGY, TypeName="Custom", Options={"Custom": "0;Watt"}, Image=Images[_IMAGE].ID, Used=1).Create()
 
 #CREATE ALL THE DEVICES (NOT USED)
 def CreateDevicesNotUsed():
