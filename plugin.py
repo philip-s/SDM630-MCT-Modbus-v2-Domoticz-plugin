@@ -94,6 +94,9 @@ _UNIT_TOTALEXPORTACTIVEENERGY = 22
 
 _UNIT_NET_KWH = 23
 
+_UNIT_IMPORTENERGY = 21
+_UNIT_EXPORTENERGY = 22
+
 #DEFAULT IMAGE
 _NO_IMAGE_UPDATE = -1
 _IMAGE = "SDM120"
@@ -226,7 +229,9 @@ class BasePlugin:
             ReadModbus(client, "TotalReactiveEnergy",  0x0158, _UNIT_TOTALREACTIVEENERGY)                	    #kvarh
             ReadModbus(client, "TotalImportActiveEnergy",  0x0500, _UNIT_TOTALIMPORTACTIVEENERGY)               #Watts
             ReadModbus(client, "TotalExportActiveEnergy",  0x0502, _UNIT_TOTALEXPORTACTIVEENERGY)               #Watts
-            ReadModbus(client, "NetkWh", 0x018C, _UNIT_NET_KWH)                                                #kWh
+            ReadModbus(client, "NetkWh", 0x018C, _UNIT_NET_KWH)                                                 #kWh
+            ReadModbus(client, "ImportEnergy", 0x0048, _UNIT_IMPORTENERGY)                                      #kWh
+            ReadModbus(client, "ExportEnergy", 0x004A, _UNIT_EXPORTENERGY)                                      #kWh
 
             # Run again following the period in the settings
             self.runAgain = _MINUTE*int(Parameters["Mode5"])
@@ -343,6 +348,12 @@ def CreateDevicesUsed():
     
     if (_UNIT_NET_KWH not in Devices):
         Domoticz.Device(Name="Net Kwh Import-Export", Unit=_UNIT_NET_KWH, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=1).Create()
+        
+    if (_UNIT_IMPORTENERGY not in Devices):
+        Domoticz.Device(Name="Import Energy", Unit=_UNIT_IMPORTENERGY, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=1).Create()
+        
+    if (_UNIT_EXPORTENERGY not in Devices):
+        Domoticz.Device(Name="Export Energy", Unit=_UNIT_EXPORTENERGY, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=1).Create()
 
 #CREATE ALL THE DEVICES (NOT USED)
 def CreateDevicesNotUsed():
