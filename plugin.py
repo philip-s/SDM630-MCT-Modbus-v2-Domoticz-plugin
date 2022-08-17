@@ -142,7 +142,7 @@ class BasePlugin:
 
         # Check if images are in database
         if _IMAGE not in Images:
-            Domoticz.Image("SINOTIMER_3F.zip").Create()
+            Domoticz.Image("SDM72DM_v2.zip").Create()
         Domoticz.Debug("Images created.")
 
         # Create devices (USED BY DEFAULT)
