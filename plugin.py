@@ -226,7 +226,7 @@ class BasePlugin:
             ReadModbus(client, "TotalReactiveEnergy",  0x0158, _UNIT_TOTALREACTIVEENERGY)                	    #kvarh
             ReadModbus(client, "TotalImportActiveEnergy",  0x0500, _UNIT_TOTALIMPORTACTIVEENERGY)               #Watts
             ReadModbus(client, "TotalExportActiveEnergy",  0x0502, _UNIT_TOTALEXPORTACTIVEENERGY)               #Watts
-            ReadModbus(client, "NetkWh",  0x018C, _UNIT_NET_KWH)                                                #Watts
+            ReadModbus(client, "NetkWh", 0x018C, _UNIT_NET_KWH)                                                #kWh
 
             # Run again following the period in the settings
             self.runAgain = _MINUTE*int(Parameters["Mode5"])
@@ -342,7 +342,7 @@ def CreateDevicesUsed():
         Domoticz.Device(Name="Total Export Active Energy", Unit=_UNIT_TOTALEXPORTACTIVEENERGY, TypeName="Usage", Options={"Custom": "0;W"}, Used=1).Create()
     
     if (_UNIT_NET_KWH not in Devices):
-        Domoticz.Device(Name="Net Kwh Import-Export", Unit=_UNIT_Net_KWH, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=1).Create()
+        Domoticz.Device(Name="Net Kwh Import-Export", Unit=_UNIT_NET_KWH, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=1).Create()
 
 #CREATE ALL THE DEVICES (NOT USED)
 def CreateDevicesNotUsed():
