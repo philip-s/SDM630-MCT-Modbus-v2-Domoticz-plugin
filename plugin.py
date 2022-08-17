@@ -195,30 +195,30 @@ class BasePlugin:
             ReadModbus(client, "Voltage_L1",              0x0000, _UNIT_VOLTAGE_L1)                            #Volts
             ReadModbus(client, "Voltage_L2",              0x0002, _UNIT_VOLTAGE_L2)                            #Volts
             ReadModbus(client, "Voltage_L3",              0x0004, _UNIT_VOLTAGE_L3)                            #Volts
-            ReadModbus(client, "Current_L1",              0x0008, _UNIT_CURRENT_L1)                            #Amps
-            ReadModbus(client, "Current_L2",              0x000A, _UNIT_CURRENT_L2)                            #Amps
-            ReadModbus(client, "Current_L3",              0x000C, _UNIT_CURRENT_L3)                            #Amps
-            ReadModbus(client, "Total_Active_Power",      0x0010, _UNIT_TOTALACTIVEPOWER)                      #Watts
-            ReadModbus(client, "Active_Power_L1",      	  0x0012, _UNIT_ACTIVEPOWER_L1)                        #Watts
-            ReadModbus(client, "Active_Power_L2",      	  0x0014, _UNIT_ACTIVEPOWER_L2)                        #Watts
-            ReadModbus(client, "Active_Power_L2",      	  0x0016, _UNIT_ACTIVEPOWER_L3)                        #Watts
+            ReadModbus(client, "Current_L1",              0x0006, _UNIT_CURRENT_L1)                            #Amps
+            ReadModbus(client, "Current_L2",              0x0008, _UNIT_CURRENT_L2)                            #Amps
+            ReadModbus(client, "Current_L3",              0x000A, _UNIT_CURRENT_L3)                            #Amps
+            ReadModbus(client, "Total_Active_Power",      0x0034, _UNIT_TOTALACTIVEPOWER)                      #Watts
+            ReadModbus(client, "Active_Power_L1",      	  0x000C, _UNIT_ACTIVEPOWER_L1)                        #Watts
+            ReadModbus(client, "Active_Power_L2",      	  0x000E, _UNIT_ACTIVEPOWER_L2)                        #Watts
+            ReadModbus(client, "Active_Power_L2",      	  0x0010, _UNIT_ACTIVEPOWER_L3)                        #Watts
 #            ReadModbus(client, "ApparentPower",        0x0012, _UNIT_APPARENTPOWER)                      #VA
-            ReadModbus(client, "Total_Reactive_Power",    0x0018, _UNIT_TOTALREACTIVEPOWER)                    #KVAr
-            ReadModbus(client, "Reactive_Power_L1",       0x001A, _UNIT_REACTIVEPOWER_L1)                      #VAr
-            ReadModbus(client, "Reactive_Power_L2",       0x001C, _UNIT_REACTIVEPOWER_L2)                      #VAr
-            ReadModbus(client, "Reactive_Power_L3",       0x001E, _UNIT_REACTIVEPOWER_L3)                      #VAr
-            ReadModbus(client, "Power_Factor_L1",         0x002A, _UNIT_POWERFACTOR_L1)                        #-
-            ReadModbus(client, "Power_Factor_L2",         0x002C, _UNIT_POWERFACTOR_L2)                        #-
-            ReadModbus(client, "Power_Factor_L3",         0x002E, _UNIT_POWERFACTOR_L3)                        #-
-            ReadModbus(client, "Frequency",            	  0x0036, _UNIT_FREQUENCY)                             #Hz
+            ReadModbus(client, "Total_Reactive_Power",    0x003C, _UNIT_TOTALREACTIVEPOWER)                    #KVAr
+            ReadModbus(client, "Reactive_Power_L1",       0x0018, _UNIT_REACTIVEPOWER_L1)                      #VAr
+            ReadModbus(client, "Reactive_Power_L2",       0x001A, _UNIT_REACTIVEPOWER_L2)                      #VAr
+            ReadModbus(client, "Reactive_Power_L3",       0x001C, _UNIT_REACTIVEPOWER_L3)                      #VAr
+            ReadModbus(client, "Power_Factor_L1",         0x001E, _UNIT_POWERFACTOR_L1)                        #-
+            ReadModbus(client, "Power_Factor_L2",         0x0020, _UNIT_POWERFACTOR_L2)                        #-
+            ReadModbus(client, "Power_Factor_L3",         0x0022, _UNIT_POWERFACTOR_L3)                        #-
+            ReadModbus(client, "Frequency",            	  0x0046, _UNIT_FREQUENCY)                             #Hz
 #            ReadModbus(client, "Total_Active_Electricity_Power",     0x0100, _UNIT_TOTALACTIVEPOWER)                          #kWh
 #            ReadModbus(client, "Total_Reactive_Electricity_Power",   0x0400, _UNIT_TOTALREACTIVEPOWER)                          #kvarh
 #            ReadModbus(client, "ImportActiveEnergy",   0x0048, _UNIT_IMPORTACTIVEENERGY)                 	#kWh
 #            ReadModbus(client, "ExportActiveEnergy",   0x004A, _UNIT_EXPORTACTIVEENERGY)                 	#kWh
 #            ReadModbus(client, "ImportReactiveEnergy", 0x004C, _UNIT_IMPORTREACTIVEENERGY)               	#kvarh
 #            ReadModbus(client, "ExportReactiveEnergy", 0x004E, _UNIT_EXPORTREACTIVEENERGY)               	#kvarh
-            ReadModbus(client, "TotalActiveEnergy",    0x0100, _UNIT_TOTALACTIVEENERGY, self.Offset)     	#kWh
-            ReadModbus(client, "TotalReactiveEnergy",  0x0400, _UNIT_TOTALREACTIVEENERGY)                	#kvarh
+            ReadModbus(client, "TotalActiveEnergy",    0x0156, _UNIT_TOTALACTIVEENERGY, self.Offset)     	#kWh
+            ReadModbus(client, "TotalReactiveEnergy",  0x0158, _UNIT_TOTALREACTIVEENERGY)                	#kvarh
 
             # Run again following the period in the settings
             self.runAgain = _MINUTE*int(Parameters["Mode5"])
