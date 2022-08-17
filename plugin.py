@@ -340,9 +340,9 @@ def CreateDevicesUsed():
 
     if (_UNIT_TOTALEXPORTACTIVEENERGY not in Devices):
         Domoticz.Device(Name="Total Export Active Energy", Unit=_UNIT_TOTALEXPORTACTIVEENERGY, TypeName="Usage", Options={"Custom": "0;W"}, Used=1).Create()
-        
-     if (_UNIT_NET_KWH not in Devices):
-        Domoticz.Device(Name="Net Kwh (Import-Export)", Unit=_UNIT_Net_KWH, TypeName="Custom", Options={"Custom": "0;kWh"}, Used=1).Create()
+    
+    if (_UNIT_NET_KWH not in Devices):
+        Domoticz.Device(Name="Net Kwh Import-Export", Unit=_UNIT_Net_KWH, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=1).Create()
 
 #CREATE ALL THE DEVICES (NOT USED)
 def CreateDevicesNotUsed():
