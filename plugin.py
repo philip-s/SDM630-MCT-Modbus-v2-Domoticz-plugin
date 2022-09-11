@@ -97,6 +97,10 @@ _UNIT_NET_KWH = 23
 _UNIT_IMPORTENERGY = 24
 _UNIT_EXPORTENERGY = 25
 
+_UNIT_APPARENTPOWER_L1 = 26
+_UNIT_APPARENTPOWER_L2 = 27
+_UNIT_APPARENTPOWER_L3 = 28
+
 #DEFAULT IMAGE
 _NO_IMAGE_UPDATE = -1
 _IMAGE = "SDM120"
@@ -210,7 +214,9 @@ class BasePlugin:
             ReadModbus(client, "Active_Power_L1",      	  0x000C, _UNIT_ACTIVEPOWER_L1)                        #Watts
             ReadModbus(client, "Active_Power_L2",      	  0x000E, _UNIT_ACTIVEPOWER_L2)                        #Watts
             ReadModbus(client, "Active_Power_L2",      	  0x0010, _UNIT_ACTIVEPOWER_L3)                        #Watts
-#            ReadModbus(client, "ApparentPower",        0x0012, _UNIT_APPARENTPOWER)                      #VA
+            ReadModbus(client, "Apparent_Power_L1",       0x0012, _UNIT_APPARENTPOWER_L1)                      #VA
+            ReadModbus(client, "Apparent_Power_L2",       0x0014, _UNIT_APPARENTPOWER_L2)                      #VA
+            ReadModbus(client, "Apparent_Power_L3",       0x0016, _UNIT_APPARENTPOWER_L3)                      #VA
             ReadModbus(client, "Total_Reactive_Power",    0x003C, _UNIT_TOTALREACTIVEPOWER)                    #KVAr
             ReadModbus(client, "Reactive_Power_L1",       0x0018, _UNIT_REACTIVEPOWER_L1)                      #VAr
             ReadModbus(client, "Reactive_Power_L2",       0x001A, _UNIT_REACTIVEPOWER_L2)                      #VAr
@@ -357,8 +363,12 @@ def CreateDevicesUsed():
 
 #CREATE ALL THE DEVICES (NOT USED)
 def CreateDevicesNotUsed():
-#    if (_UNIT_APPARENTPOWER not in Devices):
-#        Domoticz.Device(Name="Apparent Power", Unit=_UNIT_APPARENTPOWER, TypeName="Custom", Options={"Custom": "0;VA"}, Image=Images[_IMAGE].ID, Used=0).Create()
+    if (_UNIT_APPARENTPOWER_L1 not in Devices):
+        Domoticz.Device(Name="Apparent Power L1", Unit=_UNIT_APPARENTPOWER_L1, TypeName="Custom", Options={"Custom": "0;VA"}, Image=Images[_IMAGE].ID, Used=0).Create()
+    if (_UNIT_APPARENTPOWER_L2 not in Devices):
+        Domoticz.Device(Name="Apparent Power L2", Unit=_UNIT_APPARENTPOWER_L2, TypeName="Custom", Options={"Custom": "0;VA"}, Image=Images[_IMAGE].ID, Used=0).Create()
+    if (_UNIT_APPARENTPOWER_L3 not in Devices):
+        Domoticz.Device(Name="Apparent Power L3", Unit=_UNIT_APPARENTPOWER_L3, TypeName="Custom", Options={"Custom": "0;VA"}, Image=Images[_IMAGE].ID, Used=0).Create()
 
     if (_UNIT_TOTALREACTIVEPOWER not in Devices):
         Domoticz.Device(Name="Total Reactive Power", Unit=_UNIT_TOTALREACTIVEPOWER, TypeName="Custom", Options={"Custom": "0;KVar"}, Image=Images[_IMAGE].ID, Used=1).Create()
