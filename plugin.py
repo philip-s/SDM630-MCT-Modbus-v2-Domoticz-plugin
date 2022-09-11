@@ -102,6 +102,8 @@ _UNIT_APPARENTPOWER_L2 = 27
 _UNIT_APPARENTPOWER_L3 = 28
 
 _UNIT_AVERAGELINETONEUTRALVOLTS = 29
+_UNIT_AVERAGELINECURRENT = 30
+_UNIT_SUMOFLINECURRENTS = 31
 
 #DEFAULT IMAGE
 _NO_IMAGE_UPDATE = -1
@@ -241,6 +243,8 @@ class BasePlugin:
             ReadModbus(client, "ImportEnergy", 0x0048, _UNIT_IMPORTENERGY)                                      #kWh
             ReadModbus(client, "ExportEnergy", 0x004A, _UNIT_EXPORTENERGY)                                      #kWh
             ReadModbus(client, "Average line to neutral volts", 0x002A, _UNIT_AVERAGELINETONEUTRALVOLTS)        #V
+            ReadModbus(client, "Average line current", 0x002E, _UNIT_AVERAGELINECURRENT)                        #A
+            ReadModbus(client, "Sum of line currents", 0x0030, _UNIT_SUMOFLINECURRENTS)                         #A
             
             
 
@@ -397,6 +401,10 @@ def CreateDevicesNotUsed():
         
     if (_UNIT_AVERAGELINETONEUTRALVOLTS not in Devices):
         Domoticz.Device(Name="Average Line to neutral Volts", Unit=_UNIT_AVERAGELINETONEUTRALVOLTS, Type=0xF3,Subtype=0x8,Options={"Custom": "0;V"},Used=0).Create()
+    if (_UNIT_AVERAGELINECURRENT not in Devices):
+        Domoticz.Device(Name="Average Line Current", Unit=_UNIT_AVERAGELINECURRENT, TypeName="Custom", Options={"Custom": "0;A"}, Image=Images[_IMAGE].ID, Used=0).Create()
+    if (_UNIT_SUMOFLINECURRENTS not in Devices):
+        Domoticz.Device(Name="Sum of line currents", Unit=_UNIT_SUMOFLINECURRENTS, TypeName="Custom", Options={"Custom": "0;A"}, Image=Images[_IMAGE].ID, Used=0).Create()
 
         
         
