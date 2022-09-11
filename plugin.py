@@ -1,19 +1,19 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# Eastron 72 D Modbus v2 is 3-phase Energy Meter Python Plugin for Domoticz
+# Eastron SDM630 MCT Modbus v2 is 3-phase Energy Meter Python Plugin for Domoticz
 #
 # Author: Filip Sobstel adapted original Filip Demaertelaere plugin for SDM120 to Sinotimer Meter
 #
 # The most common devices are created as "used"; the others are also created, but as "unused".
 # To use the other devices, go to Setup-Devices to activate them.
 #
-# The standard communication protocol of the SDM72D-M v2 is 9600 baud, 1 stopbit, 8 bit and no parity.
-# To change the protocol, set the SDM72DM in setup-mode (hold the button 3 second) and send the required
+# The standard communication protocol of the SDM630 MCT Modbus v2 is 9600 baud, 1 stopbit, 8 bit and no parity.
+# To change the protocol, set the SDM630 in setup-mode (hold the button 3 second) and send the required
 # commands to change (not implemented in this plugin).
 #
 """
-<plugin key="SDM72D-M_V2" name="Eastron SDM72D Modbus V2 Energy Meter" author="Filip Demaertelaere and adapted by Filip Sobstel" version="1.0.0">
+<plugin key="SDM630-MCT_M_V2" name="Eastron SDM630 MCT Modbus V2 Energy Meter" author="Filip Demaertelaere and adapted by Filip Sobstel" version="1.0.0">
     <params>
         <param field="SerialPort" label="Serial Port" width="120px" required="true"/>
         <param field="Mode1" label="Slave Unit ID" width="120px" required="true" default="1"/>
@@ -168,7 +168,7 @@ class BasePlugin:
 
         # Check if images are in database
         if _IMAGE not in Images:
-            Domoticz.Image("SDM72DM_v2.zip").Create()
+            Domoticz.Image("SDM630MCT_v2.zip").Create()
         Domoticz.Debug("Images created.")
 
         # Create devices (USED BY DEFAULT)
