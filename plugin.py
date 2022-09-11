@@ -82,10 +82,6 @@ _UNIT_POWERFACTOR_L3 = 17
 
 _UNIT_FREQUENCY = 18
 
-#_UNIT_IMPORTACTIVEENERGY = 8
-#_UNIT_EXPORTACTIVEENERGY = 9
-#_UNIT_IMPORTREACTIVEENERGY = 10
-#_UNIT_EXPORTREACTIVEENERGY = 11
 _UNIT_TOTALACTIVEENERGY = 19
 _UNIT_TOTALREACTIVEENERGY = 20
 
@@ -108,17 +104,16 @@ _UNIT_SUMOFLINECURRENTS = 31
 _UNIT_TOTALSYSTEMVOLTAMPS = 32
 _UNIT_TOTALSYSTEMPOWERFACTOR = 33
 
-_UNIT_L1TOL2VOLTS = 33
-_UNIT_L2TOL3VOLTS = 34
-_UNIT_L3TOL1VOLTS = 35
-_UNIT_AVERAGELINETOLINEVOLTS = 36
+_UNIT_L1TOL2VOLTS = 34
+_UNIT_L2TOL3VOLTS = 35
+_UNIT_L3TOL1VOLTS = 36
+_UNIT_AVERAGELINETOLINEVOLTS = 37
 
-_UNIT_NEUTRALCURRENT = 37
+_UNIT_NEUTRALCURRENT = 38
 
-_UNIT_RESETTABLETOTALACTIVEENERGY = 38
-_UNIT_RESETTABLEIMPORTACTIVEENERGY = 39
-_UNIT_RESETTABLEEXPORTACTIVEENERGY = 40
-
+_UNIT_RESETTABLETOTALACTIVEENERGY = 39
+_UNIT_RESETTABLEIMPORTACTIVEENERGY = 40
+_UNIT_RESETTABLEEXPORTACTIVEENERGY = 41
 
 #DEFAULT IMAGE
 _NO_IMAGE_UPDATE = -1
@@ -226,30 +221,33 @@ class BasePlugin:
             ReadModbus(client, "Voltage_L1",              0x0000, _UNIT_VOLTAGE_L1)                            #Volts
             ReadModbus(client, "Voltage_L2",              0x0002, _UNIT_VOLTAGE_L2)                            #Volts
             ReadModbus(client, "Voltage_L3",              0x0004, _UNIT_VOLTAGE_L3)                            #Volts
+            
             ReadModbus(client, "Current_L1",              0x0006, _UNIT_CURRENT_L1)                            #Amps
             ReadModbus(client, "Current_L2",              0x0008, _UNIT_CURRENT_L2)                            #Amps
             ReadModbus(client, "Current_L3",              0x000A, _UNIT_CURRENT_L3)                            #Amps
+            
             ReadModbus(client, "Total_System_Power",      0x0034, _UNIT_TOTALSYSTEMPOWER)                      #Watts
+            
             ReadModbus(client, "Active_Power_L1",      	  0x000C, _UNIT_ACTIVEPOWER_L1)                        #Watts
             ReadModbus(client, "Active_Power_L2",      	  0x000E, _UNIT_ACTIVEPOWER_L2)                        #Watts
             ReadModbus(client, "Active_Power_L2",      	  0x0010, _UNIT_ACTIVEPOWER_L3)                        #Watts
+            
             ReadModbus(client, "Apparent_Power_L1",       0x0012, _UNIT_APPARENTPOWER_L1)                      #VA
             ReadModbus(client, "Apparent_Power_L2",       0x0014, _UNIT_APPARENTPOWER_L2)                      #VA
             ReadModbus(client, "Apparent_Power_L3",       0x0016, _UNIT_APPARENTPOWER_L3)                      #VA
+            
             ReadModbus(client, "Total_Reactive_Power",    0x003C, _UNIT_TOTALREACTIVEPOWER)                    #KVAr
+            
             ReadModbus(client, "Reactive_Power_L1",       0x0018, _UNIT_REACTIVEPOWER_L1)                      #VAr
             ReadModbus(client, "Reactive_Power_L2",       0x001A, _UNIT_REACTIVEPOWER_L2)                      #VAr
             ReadModbus(client, "Reactive_Power_L3",       0x001C, _UNIT_REACTIVEPOWER_L3)                      #VAr
+            
             ReadModbus(client, "Power_Factor_L1",         0x001E, _UNIT_POWERFACTOR_L1)                        #-
             ReadModbus(client, "Power_Factor_L2",         0x0020, _UNIT_POWERFACTOR_L2)                        #-
             ReadModbus(client, "Power_Factor_L3",         0x0022, _UNIT_POWERFACTOR_L3)                        #-
+
             ReadModbus(client, "Frequency",            	  0x0046, _UNIT_FREQUENCY)                             #Hz
-#            ReadModbus(client, "Total_Active_Electricity_Power",     0x0100, _UNIT_TOTALACTIVEPOWER)           #Wh
-#            ReadModbus(client, "Total_Reactive_Electricity_Power",   0x0400, _UNIT_TOTALREACTIVEPOWER)         #kvarh
-#            ReadModbus(client, "ImportActiveEnergy",   0x0048, _UNIT_IMPORTACTIVEENERGY)                 	    #kWh
-#            ReadModbus(client, "ExportActiveEnergy",   0x004A, _UNIT_EXPORTACTIVEENERGY)                 	    #kWh
-#            ReadModbus(client, "ImportReactiveEnergy", 0x004C, _UNIT_IMPORTREACTIVEENERGY)               	    #kvarh
-#            ReadModbus(client, "ExportReactiveEnergy", 0x004E, _UNIT_EXPORTREACTIVEENERGY)               	    #kvarh
+
             ReadModbus(client, "TotalActiveEnergy",    0x0156, _UNIT_TOTALACTIVEENERGY, self.Offset)     	    #kWh
             ReadModbus(client, "TotalReactiveEnergy",  0x0158, _UNIT_TOTALREACTIVEENERGY)                	    #kvarh
             ReadModbus(client, "TotalImportActiveEnergy",  0x0500, _UNIT_TOTALIMPORTACTIVEENERGY)               #Watts
@@ -257,6 +255,7 @@ class BasePlugin:
             ReadModbus(client, "NetkWh", 0x018C, _UNIT_NET_KWH)                                                 #kWh
             ReadModbus(client, "ImportEnergy", 0x0048, _UNIT_IMPORTENERGY)                                      #kWh
             ReadModbus(client, "ExportEnergy", 0x004A, _UNIT_EXPORTENERGY)                                      #kWh
+            
             ReadModbus(client, "Average line to neutral volts", 0x002A, _UNIT_AVERAGELINETONEUTRALVOLTS)        #V
             ReadModbus(client, "Average line current", 0x002E, _UNIT_AVERAGELINECURRENT)                        #A
             ReadModbus(client, "Sum of line currents", 0x0030, _UNIT_SUMOFLINECURRENTS)                         #A
@@ -450,11 +449,11 @@ def CreateDevicesNotUsed():
         Domoticz.Device(Name="Neutral Current", Unit=_UNIT_NEUTRALCURRENT, TypeName="Custom", Options={"Custom": "0;A"}, Image=Images[_IMAGE].ID, Used=0).Create()
         
     if (_UNIT_RESETTABLETOTALACTIVEENERGY not in Devices):
-        Domoticz.Device(Name="Ressetable Total Active Energy", Unit=_UNIT_RESETTABLETOTALACTIVEENERGY, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=1).Create()
+        Domoticz.Device(Name="Ressetable Total Active Energy", Unit=_UNIT_RESETTABLETOTALACTIVEENERGY, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=0).Create()
     if (_UNIT_RESETTABLEIMPORTACTIVEENERGY not in Devices):
-        Domoticz.Device(Name="Ressetable Import Active Energy", Unit=_UNIT_RESETTABLEIMPORTACTIVEENERGY, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=1).Create()
+        Domoticz.Device(Name="Ressetable Import Active Energy", Unit=_UNIT_RESETTABLEIMPORTACTIVEENERGY, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=0).Create()
     if (_UNIT_RESETTABLEEXPORTACTIVEENERGY not in Devices):
-        Domoticz.Device(Name="Ressetable Export Active Energy", Unit=_UNIT_RESETTABLEEXPORTACTIVEENERGY, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=1).Create()
+        Domoticz.Device(Name="Ressetable Export Active Energy", Unit=_UNIT_RESETTABLEEXPORTACTIVEENERGY, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=0).Create()
         
         
 #READ THE MODBUS INFORMATION
