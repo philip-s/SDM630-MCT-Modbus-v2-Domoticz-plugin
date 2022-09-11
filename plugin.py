@@ -105,6 +105,21 @@ _UNIT_AVERAGELINETONEUTRALVOLTS = 29
 _UNIT_AVERAGELINECURRENT = 30
 _UNIT_SUMOFLINECURRENTS = 31
 
+_UNIT_TOTALSYSTEMVOLTAMPS = 32
+_UNIT_TOTALSYSTEMPOWERFACTOR = 33
+
+_UNIT_L1TOL2VOLTS = 33
+_UNIT_L2TOL3VOLTS = 34
+_UNIT_L3TOL1VOLTS = 35
+_UNIT_AVERAGELINETOLINEVOLTS = 36
+
+_UNIT_NEUTRALCURRENT = 37
+
+_UNIT_RESETTABLETOTALACTIVEENERGY = 38
+_UNIT_RESETTABLEIMPORTACTIVEENERGY = 39
+_UNIT_RESETTABLEEXPORTACTIVEENERGY = 40
+
+
 #DEFAULT IMAGE
 _NO_IMAGE_UPDATE = -1
 _IMAGE = "SDM120"
@@ -246,8 +261,20 @@ class BasePlugin:
             ReadModbus(client, "Average line current", 0x002E, _UNIT_AVERAGELINECURRENT)                        #A
             ReadModbus(client, "Sum of line currents", 0x0030, _UNIT_SUMOFLINECURRENTS)                         #A
             
+            ReadModbus(client, "Total_system_Volt_Amps", 0x0038, _UNIT_TOTALSYSTEMVOLTAMPS)                     #VA
+            ReadModbus(client, "Total_system_Power_Factor", 0x003E, _UNIT_TOTALSYSTEMPOWERFACTOR)               #None
             
-
+            ReadModbus(client, "L1_to_L2_Voltage", 0x00C8, _UNIT_L1TOL2VOLTS)                                   #V
+            ReadModbus(client, "L2_to_L3_Voltage", 0x00CA, _UNIT_L2TOL3VOLTS)                                   #V
+            ReadModbus(client, "L3_to_L1_Voltage", 0x00CC, _UNIT_L3TOL1VOLTS)                                   #V
+            ReadModbus(client, "Average_line_to_Line_Voltage", 0x00CE, _UNIT_AVERAGELINETOLINEVOLTS)            #V
+            
+            ReadModbus(client, "Neutral_Current", 0x00E0, _UNIT_NEUTRALCURRENT)                                 #A
+            
+            ReadModbus(client, "Ressetable_Total_Active_Energy", 0x0180, _UNIT_RESETTABLETOTALACTIVEENERGY)     #kWh
+            ReadModbus(client, "Ressetable_Import_Active_Energy", 0x0184, _UNIT_RESETTABLEIMPORTACTIVEENERGY)   #kWh
+            ReadModbus(client, "Ressetable_Export_Active_Energy", 0x0186, _UNIT_RESETTABLEEXPORTACTIVEENERGY)   #kWh
+            
             # Run again following the period in the settings
             self.runAgain = _MINUTE*int(Parameters["Mode5"])
         else:
@@ -366,7 +393,6 @@ def CreateDevicesUsed():
         
     if (_UNIT_IMPORTENERGY not in Devices):
         Domoticz.Device(Name="Import Energy", Unit=_UNIT_IMPORTENERGY, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=1).Create()
-        
     if (_UNIT_EXPORTENERGY not in Devices):
         Domoticz.Device(Name="Export Energy", Unit=_UNIT_EXPORTENERGY, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=1).Create()
 
@@ -405,7 +431,30 @@ def CreateDevicesNotUsed():
         Domoticz.Device(Name="Average Line Current", Unit=_UNIT_AVERAGELINECURRENT, TypeName="Custom", Options={"Custom": "0;A"}, Image=Images[_IMAGE].ID, Used=0).Create()
     if (_UNIT_SUMOFLINECURRENTS not in Devices):
         Domoticz.Device(Name="Sum of line currents", Unit=_UNIT_SUMOFLINECURRENTS, TypeName="Custom", Options={"Custom": "0;A"}, Image=Images[_IMAGE].ID, Used=0).Create()
-
+        
+    if (_UNIT_TOTALSYSTEMVOLTAMPS not in Devices):
+        Domoticz.Device(Name="Total system Volt Amps", Unit=_UNIT_TOTALSYSTEMVOLTAMPS, TypeName="Custom", Options={"Custom": "0;VA"}, Image=Images[_IMAGE].ID, Used=0).Create()
+    if (_UNIT_TOTALSYSTEMPOWERFACTOR not in Devices):
+        Domoticz.Device(Name="Total system Power Factor", Unit=_UNIT_TOTALSYSTEMPOWERFACTOR, TypeName="Custom", Options={"Custom": "0;"}, Image=Images[_IMAGE].ID, Used=0).Create()
+        
+    if (_UNIT_L1TOL2VOLTS not in Devices):
+        Domoticz.Device(Name="L1 to L2 Voltage", Unit=_UNIT_L1TOL2VOLTS, Type=0xF3,Subtype=0x8,Options={"Custom": "0;V"},Used=0).Create()
+    if (_UNIT_L2TOL3VOLTS not in Devices):
+        Domoticz.Device(Name="L2 to L3 Voltage", Unit=_UNIT_L2TOL3VOLTS, Type=0xF3,Subtype=0x8,Options={"Custom": "0;V"},Used=0).Create()
+    if (_UNIT_L3TOL1VOLTS not in Devices):
+        Domoticz.Device(Name="L3 to L1 Voltage", Unit=_UNIT_L3TOL1VOLTS, Type=0xF3,Subtype=0x8,Options={"Custom": "0;V"},Used=0).Create()
+    if (_UNIT_AVERAGELINETOLINEVOLTS not in Devices):
+        Domoticz.Device(Name="Average line to Line Voltage", Unit=_UNIT_AVERAGELINETOLINEVOLTS, Type=0xF3,Subtype=0x8,Options={"Custom": "0;V"},Used=0).Create()
+        
+    if (_UNIT_NEUTRALCURRENT not in Devices):
+        Domoticz.Device(Name="Neutral Current", Unit=_UNIT_NEUTRALCURRENT, TypeName="Custom", Options={"Custom": "0;A"}, Image=Images[_IMAGE].ID, Used=0).Create()
+        
+    if (_UNIT_RESETTABLETOTALACTIVEENERGY not in Devices):
+        Domoticz.Device(Name="Ressetable Total Active Energy", Unit=_UNIT_RESETTABLETOTALACTIVEENERGY, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=1).Create()
+    if (_UNIT_RESETTABLEIMPORTACTIVEENERGY not in Devices):
+        Domoticz.Device(Name="Ressetable Import Active Energy", Unit=_UNIT_RESETTABLEIMPORTACTIVEENERGY, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=1).Create()
+    if (_UNIT_RESETTABLEEXPORTACTIVEENERGY not in Devices):
+        Domoticz.Device(Name="Ressetable Export Active Energy", Unit=_UNIT_RESETTABLEEXPORTACTIVEENERGY, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=1).Create()
         
         
 #READ THE MODBUS INFORMATION
