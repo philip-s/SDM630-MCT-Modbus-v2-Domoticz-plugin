@@ -23,6 +23,7 @@
                 <option label="2400" value="2400"/>
                 <option label="4800" value="4800"/>
                 <option label="9600" value="9600" default="true"/>
+                <option label="19200" value="19200"/>
             </options>
         </param>
         <param field="Mode3" label="Port settings" width="260px" required="true">
