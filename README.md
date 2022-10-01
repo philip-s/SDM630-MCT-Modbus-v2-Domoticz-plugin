@@ -48,6 +48,7 @@ Hint: The default interval of one minute is usually enough precise for most of t
 ```
 cd ~/domoticz/plugins/SDM630-MCT-Modbus-v2-Domoticz-plugin/
 git pull
+sudo systemctl restart domoticz.service
 ```
 Tested on domoticz 2021.1 (should work on also on 2020.2)
 <br><br><br>
