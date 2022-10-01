@@ -1,4 +1,5 @@
 # SDM630-MCT-Modbus v2
+Test update'u
 SDM630-MCT-Modbus v2 is a 3-phase power meter with RS485 Port modbus RTU.
 This is a plugin for domoticz to get all the data from the meter directly into Domoticz. 
 To make it work usually you need a USB-Modbus dongle plugged into raspberry and cables connected to A and B in the meter. 
