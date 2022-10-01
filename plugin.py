@@ -77,9 +77,9 @@ _UNIT_REACTIVEPOWER_L1 = 12
 _UNIT_REACTIVEPOWER_L2 = 13
 _UNIT_REACTIVEPOWER_L3 = 14
 
-_UNIT_POWERFACTOR_L1 = 15
-_UNIT_POWERFACTOR_L2 = 16
-_UNIT_POWERFACTOR_L3 = 17
+#_UNIT_POWERFACTOR_L1 = 15
+#_UNIT_POWERFACTOR_L2 = 16
+#_UNIT_POWERFACTOR_L3 = 17
 
 _UNIT_FREQUENCY = 18
 
@@ -94,27 +94,27 @@ _UNIT_NET_KWH = 23
 _UNIT_IMPORTENERGY = 24
 _UNIT_EXPORTENERGY = 25
 
-_UNIT_APPARENTPOWER_L1 = 26
-_UNIT_APPARENTPOWER_L2 = 27
-_UNIT_APPARENTPOWER_L3 = 28
+#_UNIT_APPARENTPOWER_L1 = 26
+#_UNIT_APPARENTPOWER_L2 = 27
+#_UNIT_APPARENTPOWER_L3 = 28
 
-_UNIT_AVERAGELINETONEUTRALVOLTS = 29
-_UNIT_AVERAGELINECURRENT = 30
-_UNIT_SUMOFLINECURRENTS = 31
+#_UNIT_AVERAGELINETONEUTRALVOLTS = 29
+#_UNIT_AVERAGELINECURRENT = 30
+#_UNIT_SUMOFLINECURRENTS = 31
 
-_UNIT_TOTALSYSTEMVOLTAMPS = 32
-_UNIT_TOTALSYSTEMPOWERFACTOR = 33
+#_UNIT_TOTALSYSTEMVOLTAMPS = 32
+#_UNIT_TOTALSYSTEMPOWERFACTOR = 33
 
-_UNIT_L1TOL2VOLTS = 34
-_UNIT_L2TOL3VOLTS = 35
-_UNIT_L3TOL1VOLTS = 36
-_UNIT_AVERAGELINETOLINEVOLTS = 37
+#_UNIT_L1TOL2VOLTS = 34
+#_UNIT_L2TOL3VOLTS = 35
+#_UNIT_L3TOL1VOLTS = 36
+#_UNIT_AVERAGELINETOLINEVOLTS = 37
 
-_UNIT_NEUTRALCURRENT = 38
+#_UNIT_NEUTRALCURRENT = 38
 
-_UNIT_RESETTABLETOTALACTIVEENERGY = 39
-_UNIT_RESETTABLEIMPORTACTIVEENERGY = 40
-_UNIT_RESETTABLEEXPORTACTIVEENERGY = 41
+#_UNIT_RESETTABLETOTALACTIVEENERGY = 39
+#_UNIT_RESETTABLEIMPORTACTIVEENERGY = 40
+#_UNIT_RESETTABLEEXPORTACTIVEENERGY = 41
 
 #DEFAULT IMAGE
 _NO_IMAGE_UPDATE = -1
@@ -233,9 +233,9 @@ class BasePlugin:
             ReadModbus(client, "Active_Power_L2",      	  0x000E, _UNIT_ACTIVEPOWER_L2)                        #Watts
             ReadModbus(client, "Active_Power_L2",      	  0x0010, _UNIT_ACTIVEPOWER_L3)                        #Watts
             
-            ReadModbus(client, "Apparent_Power_L1",       0x0012, _UNIT_APPARENTPOWER_L1)                      #VA
-            ReadModbus(client, "Apparent_Power_L2",       0x0014, _UNIT_APPARENTPOWER_L2)                      #VA
-            ReadModbus(client, "Apparent_Power_L3",       0x0016, _UNIT_APPARENTPOWER_L3)                      #VA
+            #ReadModbus(client, "Apparent_Power_L1",       0x0012, _UNIT_APPARENTPOWER_L1)                      #VA
+            #ReadModbus(client, "Apparent_Power_L2",       0x0014, _UNIT_APPARENTPOWER_L2)                      #VA
+            #ReadModbus(client, "Apparent_Power_L3",       0x0016, _UNIT_APPARENTPOWER_L3)                      #VA
             
             ReadModbus(client, "Total_Reactive_Power",    0x003C, _UNIT_TOTALREACTIVEPOWER)                    #KVAr
             
@@ -243,9 +243,9 @@ class BasePlugin:
             ReadModbus(client, "Reactive_Power_L2",       0x001A, _UNIT_REACTIVEPOWER_L2)                      #VAr
             ReadModbus(client, "Reactive_Power_L3",       0x001C, _UNIT_REACTIVEPOWER_L3)                      #VAr
             
-            ReadModbus(client, "Power_Factor_L1",         0x001E, _UNIT_POWERFACTOR_L1)                        #-
-            ReadModbus(client, "Power_Factor_L2",         0x0020, _UNIT_POWERFACTOR_L2)                        #-
-            ReadModbus(client, "Power_Factor_L3",         0x0022, _UNIT_POWERFACTOR_L3)                        #-
+            #ReadModbus(client, "Power_Factor_L1",         0x001E, _UNIT_POWERFACTOR_L1)                        #-
+            #ReadModbus(client, "Power_Factor_L2",         0x0020, _UNIT_POWERFACTOR_L2)                        #-
+            #ReadModbus(client, "Power_Factor_L3",         0x0022, _UNIT_POWERFACTOR_L3)                        #-
 
             ReadModbus(client, "Frequency",            	  0x0046, _UNIT_FREQUENCY)                             #Hz
 
@@ -257,23 +257,23 @@ class BasePlugin:
             ReadModbus(client, "ImportEnergy", 0x0048, _UNIT_IMPORTENERGY)                                      #kWh
             ReadModbus(client, "ExportEnergy", 0x004A, _UNIT_EXPORTENERGY)                                      #kWh
             
-            ReadModbus(client, "Average line to neutral volts", 0x002A, _UNIT_AVERAGELINETONEUTRALVOLTS)        #V
-            ReadModbus(client, "Average line current", 0x002E, _UNIT_AVERAGELINECURRENT)                        #A
-            ReadModbus(client, "Sum of line currents", 0x0030, _UNIT_SUMOFLINECURRENTS)                         #A
+            #ReadModbus(client, "Average line to neutral volts", 0x002A, _UNIT_AVERAGELINETONEUTRALVOLTS)        #V
+            #ReadModbus(client, "Average line current", 0x002E, _UNIT_AVERAGELINECURRENT)                        #A
+            #ReadModbus(client, "Sum of line currents", 0x0030, _UNIT_SUMOFLINECURRENTS)                         #A
             
-            ReadModbus(client, "Total_system_Volt_Amps", 0x0038, _UNIT_TOTALSYSTEMVOLTAMPS)                     #VA
-            ReadModbus(client, "Total_system_Power_Factor", 0x003E, _UNIT_TOTALSYSTEMPOWERFACTOR)               #None
+            #ReadModbus(client, "Total_system_Volt_Amps", 0x0038, _UNIT_TOTALSYSTEMVOLTAMPS)                     #VA
+            #ReadModbus(client, "Total_system_Power_Factor", 0x003E, _UNIT_TOTALSYSTEMPOWERFACTOR)               #None
             
-            ReadModbus(client, "L1_to_L2_Voltage", 0x00C8, _UNIT_L1TOL2VOLTS)                                   #V
-            ReadModbus(client, "L2_to_L3_Voltage", 0x00CA, _UNIT_L2TOL3VOLTS)                                   #V
-            ReadModbus(client, "L3_to_L1_Voltage", 0x00CC, _UNIT_L3TOL1VOLTS)                                   #V
-            ReadModbus(client, "Average_line_to_Line_Voltage", 0x00CE, _UNIT_AVERAGELINETOLINEVOLTS)            #V
+            #ReadModbus(client, "L1_to_L2_Voltage", 0x00C8, _UNIT_L1TOL2VOLTS)                                   #V
+            #ReadModbus(client, "L2_to_L3_Voltage", 0x00CA, _UNIT_L2TOL3VOLTS)                                   #V
+            #ReadModbus(client, "L3_to_L1_Voltage", 0x00CC, _UNIT_L3TOL1VOLTS)                                   #V
+            #ReadModbus(client, "Average_line_to_Line_Voltage", 0x00CE, _UNIT_AVERAGELINETOLINEVOLTS)            #V
             
-            ReadModbus(client, "Neutral_Current", 0x00E0, _UNIT_NEUTRALCURRENT)                                 #A
+            #ReadModbus(client, "Neutral_Current", 0x00E0, _UNIT_NEUTRALCURRENT)                                 #A
             
-            ReadModbus(client, "Ressetable_Total_Active_Energy", 0x0180, _UNIT_RESETTABLETOTALACTIVEENERGY)     #kWh
-            ReadModbus(client, "Ressetable_Import_Active_Energy", 0x0184, _UNIT_RESETTABLEIMPORTACTIVEENERGY)   #kWh
-            ReadModbus(client, "Ressetable_Export_Active_Energy", 0x0186, _UNIT_RESETTABLEEXPORTACTIVEENERGY)   #kWh
+            #ReadModbus(client, "Ressetable_Total_Active_Energy", 0x0180, _UNIT_RESETTABLETOTALACTIVEENERGY)     #kWh
+            #ReadModbus(client, "Ressetable_Import_Active_Energy", 0x0184, _UNIT_RESETTABLEIMPORTACTIVEENERGY)   #kWh
+            #ReadModbus(client, "Ressetable_Export_Active_Energy", 0x0186, _UNIT_RESETTABLEEXPORTACTIVEENERGY)   #kWh
             
             # Run again following the period in the settings
             self.runAgain = _MINUTE*int(Parameters["Mode5"])
@@ -398,12 +398,12 @@ def CreateDevicesUsed():
 
 #CREATE ALL THE DEVICES (NOT USED)
 def CreateDevicesNotUsed():
-    if (_UNIT_APPARENTPOWER_L1 not in Devices):
-        Domoticz.Device(Name="Apparent Power L1", Unit=_UNIT_APPARENTPOWER_L1, TypeName="Custom", Options={"Custom": "0;VA"}, Image=Images[_IMAGE].ID, Used=0).Create()
-    if (_UNIT_APPARENTPOWER_L2 not in Devices):
-        Domoticz.Device(Name="Apparent Power L2", Unit=_UNIT_APPARENTPOWER_L2, TypeName="Custom", Options={"Custom": "0;VA"}, Image=Images[_IMAGE].ID, Used=0).Create()
-    if (_UNIT_APPARENTPOWER_L3 not in Devices):
-        Domoticz.Device(Name="Apparent Power L3", Unit=_UNIT_APPARENTPOWER_L3, TypeName="Custom", Options={"Custom": "0;VA"}, Image=Images[_IMAGE].ID, Used=0).Create()
+    #if (_UNIT_APPARENTPOWER_L1 not in Devices):
+    #    Domoticz.Device(Name="Apparent Power L1", Unit=_UNIT_APPARENTPOWER_L1, TypeName="Custom", Options={"Custom": "0;VA"}, Image=Images[_IMAGE].ID, Used=0).Create()
+    #if (_UNIT_APPARENTPOWER_L2 not in Devices):
+    #    Domoticz.Device(Name="Apparent Power L2", Unit=_UNIT_APPARENTPOWER_L2, TypeName="Custom", Options={"Custom": "0;VA"}, Image=Images[_IMAGE].ID, Used=0).Create()
+    #if (_UNIT_APPARENTPOWER_L3 not in Devices):
+    #    Domoticz.Device(Name="Apparent Power L3", Unit=_UNIT_APPARENTPOWER_L3, TypeName="Custom", Options={"Custom": "0;VA"}, Image=Images[_IMAGE].ID, Used=0).Create()
 
     if (_UNIT_TOTALREACTIVEPOWER not in Devices):
         Domoticz.Device(Name="Total Reactive Power", Unit=_UNIT_TOTALREACTIVEPOWER, TypeName="Custom", Options={"Custom": "0;KVar"}, Image=Images[_IMAGE].ID, Used=1).Create()
@@ -418,43 +418,43 @@ def CreateDevicesNotUsed():
     if (_UNIT_TOTALREACTIVEENERGY not in Devices):
         Domoticz.Device(Name="Total Reactive Energy", Unit=_UNIT_TOTALREACTIVEENERGY, TypeName="Custom", Options={"Custom": "0; kVArh"}, Image=Images[_IMAGE].ID, Used=0).Create()
 
-    if (_UNIT_POWERFACTOR_L1 not in Devices):
-        Domoticz.Device(Name="Power factor L1", Unit=_UNIT_POWERFACTOR_L1, TypeName="Custom", Options={"Custom": "0;"}, Image=Images[_IMAGE].ID, Used=0).Create()
-    if (_UNIT_POWERFACTOR_L2 not in Devices):
-        Domoticz.Device(Name="Power factor L2", Unit=_UNIT_POWERFACTOR_L2, TypeName="Custom", Options={"Custom": "0;"}, Image=Images[_IMAGE].ID, Used=0).Create()
-    if (_UNIT_POWERFACTOR_L3 not in Devices):
-        Domoticz.Device(Name="Power factor L3", Unit=_UNIT_POWERFACTOR_L3, TypeName="Custom", Options={"Custom": "0;"}, Image=Images[_IMAGE].ID, Used=0).Create()
+    #if (_UNIT_POWERFACTOR_L1 not in Devices):
+    #    Domoticz.Device(Name="Power factor L1", Unit=_UNIT_POWERFACTOR_L1, TypeName="Custom", Options={"Custom": "0;"}, Image=Images[_IMAGE].ID, Used=0).Create()
+    #if (_UNIT_POWERFACTOR_L2 not in Devices):
+    #    Domoticz.Device(Name="Power factor L2", Unit=_UNIT_POWERFACTOR_L2, TypeName="Custom", Options={"Custom": "0;"}, Image=Images[_IMAGE].ID, Used=0).Create()
+    #if (_UNIT_POWERFACTOR_L3 not in Devices):
+    #    Domoticz.Device(Name="Power factor L3", Unit=_UNIT_POWERFACTOR_L3, TypeName="Custom", Options={"Custom": "0;"}, Image=Images[_IMAGE].ID, Used=0).Create()
         
-    if (_UNIT_AVERAGELINETONEUTRALVOLTS not in Devices):
-        Domoticz.Device(Name="Average Line to neutral Volts", Unit=_UNIT_AVERAGELINETONEUTRALVOLTS, Type=0xF3,Subtype=0x8,Options={"Custom": "0;V"},Used=0).Create()
-    if (_UNIT_AVERAGELINECURRENT not in Devices):
-        Domoticz.Device(Name="Average Line Current", Unit=_UNIT_AVERAGELINECURRENT, TypeName="Custom", Options={"Custom": "0;A"}, Image=Images[_IMAGE].ID, Used=0).Create()
-    if (_UNIT_SUMOFLINECURRENTS not in Devices):
-        Domoticz.Device(Name="Sum of line currents", Unit=_UNIT_SUMOFLINECURRENTS, TypeName="Custom", Options={"Custom": "0;A"}, Image=Images[_IMAGE].ID, Used=0).Create()
+    #if (_UNIT_AVERAGELINETONEUTRALVOLTS not in Devices):
+    #    Domoticz.Device(Name="Average Line to neutral Volts", Unit=_UNIT_AVERAGELINETONEUTRALVOLTS, Type=0xF3,Subtype=0x8,Options={"Custom": "0;V"},Used=0).Create()
+    #if (_UNIT_AVERAGELINECURRENT not in Devices):
+    #    Domoticz.Device(Name="Average Line Current", Unit=_UNIT_AVERAGELINECURRENT, TypeName="Custom", Options={"Custom": "0;A"}, Image=Images[_IMAGE].ID, Used=0).Create()
+    #if (_UNIT_SUMOFLINECURRENTS not in Devices):
+    #    Domoticz.Device(Name="Sum of line currents", Unit=_UNIT_SUMOFLINECURRENTS, TypeName="Custom", Options={"Custom": "0;A"}, Image=Images[_IMAGE].ID, Used=0).Create()
         
-    if (_UNIT_TOTALSYSTEMVOLTAMPS not in Devices):
-        Domoticz.Device(Name="Total system Volt Amps", Unit=_UNIT_TOTALSYSTEMVOLTAMPS, TypeName="Custom", Options={"Custom": "0;VA"}, Image=Images[_IMAGE].ID, Used=0).Create()
-    if (_UNIT_TOTALSYSTEMPOWERFACTOR not in Devices):
-        Domoticz.Device(Name="Total system Power Factor", Unit=_UNIT_TOTALSYSTEMPOWERFACTOR, TypeName="Custom", Options={"Custom": "0;"}, Image=Images[_IMAGE].ID, Used=0).Create()
+    #if (_UNIT_TOTALSYSTEMVOLTAMPS not in Devices):
+    #    Domoticz.Device(Name="Total system Volt Amps", Unit=_UNIT_TOTALSYSTEMVOLTAMPS, TypeName="Custom", Options={"Custom": "0;VA"}, Image=Images[_IMAGE].ID, Used=0).Create()
+    #if (_UNIT_TOTALSYSTEMPOWERFACTOR not in Devices):
+    #    Domoticz.Device(Name="Total system Power Factor", Unit=_UNIT_TOTALSYSTEMPOWERFACTOR, TypeName="Custom", Options={"Custom": "0;"}, Image=Images[_IMAGE].ID, Used=0).Create()
         
-    if (_UNIT_L1TOL2VOLTS not in Devices):
-        Domoticz.Device(Name="L1 to L2 Voltage", Unit=_UNIT_L1TOL2VOLTS, Type=0xF3,Subtype=0x8,Options={"Custom": "0;V"},Used=0).Create()
-    if (_UNIT_L2TOL3VOLTS not in Devices):
-        Domoticz.Device(Name="L2 to L3 Voltage", Unit=_UNIT_L2TOL3VOLTS, Type=0xF3,Subtype=0x8,Options={"Custom": "0;V"},Used=0).Create()
-    if (_UNIT_L3TOL1VOLTS not in Devices):
-        Domoticz.Device(Name="L3 to L1 Voltage", Unit=_UNIT_L3TOL1VOLTS, Type=0xF3,Subtype=0x8,Options={"Custom": "0;V"},Used=0).Create()
-    if (_UNIT_AVERAGELINETOLINEVOLTS not in Devices):
-        Domoticz.Device(Name="Average line to Line Voltage", Unit=_UNIT_AVERAGELINETOLINEVOLTS, Type=0xF3,Subtype=0x8,Options={"Custom": "0;V"},Used=0).Create()
+    #if (_UNIT_L1TOL2VOLTS not in Devices):
+    #    Domoticz.Device(Name="L1 to L2 Voltage", Unit=_UNIT_L1TOL2VOLTS, Type=0xF3,Subtype=0x8,Options={"Custom": "0;V"},Used=0).Create()
+    #if (_UNIT_L2TOL3VOLTS not in Devices):
+    #    Domoticz.Device(Name="L2 to L3 Voltage", Unit=_UNIT_L2TOL3VOLTS, Type=0xF3,Subtype=0x8,Options={"Custom": "0;V"},Used=0).Create()
+    #if (_UNIT_L3TOL1VOLTS not in Devices):
+    #    Domoticz.Device(Name="L3 to L1 Voltage", Unit=_UNIT_L3TOL1VOLTS, Type=0xF3,Subtype=0x8,Options={"Custom": "0;V"},Used=0).Create()
+    #if (_UNIT_AVERAGELINETOLINEVOLTS not in Devices):
+    #    Domoticz.Device(Name="Average line to Line Voltage", Unit=_UNIT_AVERAGELINETOLINEVOLTS, Type=0xF3,Subtype=0x8,Options={"Custom": "0;V"},Used=0).Create()
         
-    if (_UNIT_NEUTRALCURRENT not in Devices):
-        Domoticz.Device(Name="Neutral Current", Unit=_UNIT_NEUTRALCURRENT, TypeName="Custom", Options={"Custom": "0;A"}, Image=Images[_IMAGE].ID, Used=0).Create()
+    #if (_UNIT_NEUTRALCURRENT not in Devices):
+    #    Domoticz.Device(Name="Neutral Current", Unit=_UNIT_NEUTRALCURRENT, TypeName="Custom", Options={"Custom": "0;A"}, Image=Images[_IMAGE].ID, Used=0).Create()
         
-    if (_UNIT_RESETTABLETOTALACTIVEENERGY not in Devices):
-        Domoticz.Device(Name="Ressetable Total Active Energy", Unit=_UNIT_RESETTABLETOTALACTIVEENERGY, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=0).Create()
-    if (_UNIT_RESETTABLEIMPORTACTIVEENERGY not in Devices):
-        Domoticz.Device(Name="Ressetable Import Active Energy", Unit=_UNIT_RESETTABLEIMPORTACTIVEENERGY, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=0).Create()
-    if (_UNIT_RESETTABLEEXPORTACTIVEENERGY not in Devices):
-        Domoticz.Device(Name="Ressetable Export Active Energy", Unit=_UNIT_RESETTABLEEXPORTACTIVEENERGY, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=0).Create()
+    #if (_UNIT_RESETTABLETOTALACTIVEENERGY not in Devices):
+    #    Domoticz.Device(Name="Ressetable Total Active Energy", Unit=_UNIT_RESETTABLETOTALACTIVEENERGY, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=0).Create()
+    #if (_UNIT_RESETTABLEIMPORTACTIVEENERGY not in Devices):
+    #    Domoticz.Device(Name="Ressetable Import Active Energy", Unit=_UNIT_RESETTABLEIMPORTACTIVEENERGY, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=0).Create()
+    #if (_UNIT_RESETTABLEEXPORTACTIVEENERGY not in Devices):
+    #    Domoticz.Device(Name="Ressetable Export Active Energy", Unit=_UNIT_RESETTABLEEXPORTACTIVEENERGY, TypeName="Custom", Options={"Custom": "0;kWh"}, Image=Images[_IMAGE].ID, Used=0).Create()
         
         
 #READ THE MODBUS INFORMATION
