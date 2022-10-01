@@ -37,7 +37,7 @@ sudo systemctl restart domoticz.service
 ```
 ## Configuration
 3. Refresh Domoticz website (F5).<br>
-4. Select "Eastron SDM72-D-Modbus v2" in Hardware configuration screen.<br>
+4. Select "Eastron SDM630-MCT-Modbus v2" in Hardware configuration screen.<br>
 If needed modify some parameters (defaults will do) and click add.<br>
 Hint: Set reading interval to 0 if you want updates per "heartbeat" of the system (aprox 10s in my case).<br>
 Hint: The default interval of one minute is usually enough precise for most of the cases.<br>
