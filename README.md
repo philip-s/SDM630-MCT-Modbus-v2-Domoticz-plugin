@@ -17,12 +17,23 @@ This plugin requires python modules: <br>
 - minimalmodbus -> http://minimalmodbus.readthedocs.io<br>
 To install those above :
 ```
-sudo apt-get update
-sudo apt-get install python3.7 libpython3.7 python3.7-dev -y
-sudo apt-get install python-pip python3-pip -y
+sudo apt-get update                           # Update repository
+sudo apt-get upgrade                          # Update your system
+sudo apt-get install python3.7 libpython3.7 python3.7-dev -y           # Archive, works only with old Pythons
+sudo apt-get install python-pip -y            # Archive, works only with old Pythons
+sudo apt-get install python3-pip -y           # Just in case
 pip install pyserial
 pip install minimalmodbus
 sudo pip3 install -U pymodbus
+
+## Just in case you didn't install pip from the link above with python 3.7 installation:
+wget https://bootstrap.pypa.io/get-pip.py     
+python3.7 get-pip.py                          
+
+## Using python 3.7 install modules responsible for MODBUS functionality:
+pip3.7 install pyserial
+pip3.7 install minimalmodbus
+sudo pip3.7 install -U pymodbus
 sudo reboot
 ```
 ## Installation of the plugin
