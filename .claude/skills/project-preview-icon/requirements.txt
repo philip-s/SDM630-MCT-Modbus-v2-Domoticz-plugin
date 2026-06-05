@@ -1,0 +1,5 @@
+# Zależności skilla project-preview-icon
+# Instalacja (np. w venv): pip install -r requirements.txt
+pymupdf>=1.23      # renderowanie PDF -> obraz (bez systemowego popplera)
+pillow>=10.0       # obróbka obrazu (kadr, przycięcie, JPG)
+python-docx>=1.1   # opcjonalnie: wstawianie podglądu do strony tytułowej .docx
