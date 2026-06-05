@@ -1,0 +1,5 @@
+# Wygenerowane oświadczenia
+out/
+# Cache Pythona
+__pycache__/
+*.pyc

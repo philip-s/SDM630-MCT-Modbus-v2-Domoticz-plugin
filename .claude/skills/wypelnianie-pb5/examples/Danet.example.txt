@@ -1,0 +1,41 @@
+# Danet.txt — dane wejściowe do oświadczenia PB-5
+# Format: klucz = wartość. Sekcje w [nawiasach]. Linie od # to komentarze.
+# Klucze powtarzalne (dzialka, osoba) można podawać wielokrotnie.
+
+organ = Starosta Wołomiński
+
+[inwestor]
+typ            = osoba fizyczna
+imie_nazwisko  = Jan Kowalski
+kraj           = Polska
+wojewodztwo    = mazowieckie
+powiat         = wołomiński
+gmina          = Marki
+miejscowosc    = Marki
+ulica          = Lipowa
+nr_domu        = 12
+nr_lokalu      =
+kod_pocztowy   = 05-270
+poczta         = Marki
+
+[nieruchomosc]
+# Każda działka w osobnym wierszu:  jednostka ewidencyjna | obręb | nr działki
+dzialka = 143301_1 Marki | 0001 Marki | 45/2
+dzialka = 143301_1 Marki | 0001 Marki | 45/3
+
+# Jeden z: wlasnosc | wspolwlasnosc | uzytkowanie_wieczyste |
+#          trwaly_zarzad | ograniczone_prawo_rzeczowe | stosunek_zobowiazaniowy
+tytul_prawny = wlasnosc
+
+# Tylko gdy tytul_prawny = wspolwlasnosc — pozostali współwłaściciele:
+# [wspolwlasciciele]
+# osoba = Anna Kowalska | ul. Lipowa 12, 05-270 Marki
+
+# Osoby podpisujące. Każda dostaje OSOBNY PDF (jedno oświadczenie = jeden podpis).
+# Jeśli sekcja pusta/pominięta — sygnatariuszem jest inwestor.
+[sygnatariusze]
+osoba = Jan Kowalski
+
+# Miejscowość i data podpisu (opcjonalnie; domyślnie zostawiamy puste do ręcznego wpisania)
+miejscowosc_podpisu = Marki
+data_podpisu =

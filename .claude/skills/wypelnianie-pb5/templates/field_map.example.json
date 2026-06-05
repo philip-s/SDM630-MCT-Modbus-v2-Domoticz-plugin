@@ -1,0 +1,51 @@
+{
+  "_comment": [
+    "Mapowanie logicznych pól PB-5 -> nazwy pól AcroForm w szablonie PDF.",
+    "Nazwy po prawej (wartości) MUSZĄ odpowiadać realnym nazwom pól w templates/PB-5.pdf.",
+    "Wygeneruj listę realnych nazw:  python scripts/inspect_fields.py templates/PB-5.pdf",
+    "Następnie skopiuj ten plik do field_map.json i podstaw prawdziwe nazwy.",
+    "Pola, których nie ma w PDF, są pomijane (z ostrzeżeniem) — można je zostawić."
+  ],
+  "text": {
+    "organ": "organ",
+    "inwestor_nazwa": "inwestor_imie_nazwisko",
+    "inwestor_kraj": "kraj",
+    "inwestor_wojewodztwo": "wojewodztwo",
+    "inwestor_powiat": "powiat",
+    "inwestor_gmina": "gmina",
+    "inwestor_miejscowosc": "miejscowosc",
+    "inwestor_ulica": "ulica",
+    "inwestor_nr_domu": "nr_domu",
+    "inwestor_nr_lokalu": "nr_lokalu",
+    "inwestor_kod_pocztowy": "kod_pocztowy",
+    "inwestor_poczta": "poczta",
+    "inwestor_reprezentant": "reprezentant",
+    "dzialka_1_jednostka": "dz1_jednostka",
+    "dzialka_1_obreb": "dz1_obreb",
+    "dzialka_1_nr": "dz1_nr",
+    "dzialka_2_jednostka": "dz2_jednostka",
+    "dzialka_2_obreb": "dz2_obreb",
+    "dzialka_2_nr": "dz2_nr",
+    "dzialka_3_jednostka": "dz3_jednostka",
+    "dzialka_3_obreb": "dz3_obreb",
+    "dzialka_3_nr": "dz3_nr",
+    "dzialka_4_jednostka": "dz4_jednostka",
+    "dzialka_4_obreb": "dz4_obreb",
+    "dzialka_4_nr": "dz4_nr",
+    "wspolwlasciciele": "wspolwlasciciele",
+    "miejscowosc_data": "miejscowosc_data",
+    "podpis_imie": "podpis_imie_nazwisko"
+  },
+  "checkbox": {
+    "typ_osoba_fizyczna": { "field": "typ_osoba_fizyczna", "on": "Tak" },
+    "typ_osoba_prawna": { "field": "typ_osoba_prawna", "on": "Tak" },
+    "typ_jednostka": { "field": "typ_jednostka", "on": "Tak" },
+    "tytul_1_wlasnosc": { "field": "tytul_wlasnosc", "on": "Tak" },
+    "tytul_2_wspolwlasnosc": { "field": "tytul_wspolwlasnosc", "on": "Tak" },
+    "tytul_3_uzytkowanie_wieczyste": { "field": "tytul_uzytkowanie_wieczyste", "on": "Tak" },
+    "tytul_4_trwaly_zarzad": { "field": "tytul_trwaly_zarzad", "on": "Tak" },
+    "tytul_5_ograniczone_prawo_rzeczowe": { "field": "tytul_ograniczone_prawo", "on": "Tak" },
+    "tytul_6_stosunek_zobowiazaniowy": { "field": "tytul_stosunek_zobowiazaniowy", "on": "Tak" }
+  },
+  "table": { "max_rows": 4 }
+}
