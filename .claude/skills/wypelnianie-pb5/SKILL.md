@@ -37,11 +37,11 @@ Szczegóły formularza, podstawa prawna i struktura pól: **`references/PB-5.md`
    Jeśli realny `Danet.txt` projektu ma inny układ, dostosuj parser
    (`scripts/parse_danet.py`) — jest celowo tolerancyjny (`klucz = wartość`,
    sekcje `[...]`, powtarzalne `dzialka`/`osoba`).
-2. **`templates/PB-5.pdf`** — oficjalny wypełnialny wzór PB-5. **Wgrywa go człowiek**
-   (pobranie z GUNB/e-Budownictwo jest blokowane w tym środowisku). Patrz
-   `templates/README.md`.
-3. **`templates/field_map.json`** — mapowanie pól (utworzone raz dla danego
-   szablonu; wzór: `templates/field_map.example.json`).
+2. **`Warsztat Architekta/Wzory/GUNB/PB-5.pdf`** — oficjalny wypełnialny wzór PB-5
+   z centralnej biblioteki wzorów. **Wgrywa go człowiek** (pobranie z GUNB/
+   e-Budownictwo jest blokowane w tym środowisku). Patrz `Warsztat Architekta/Wzory/README.md`.
+3. **`templates/field_map.json`** — mapowanie pól PDF (konfiguracja skilla, nie wzór;
+   tworzone raz dla danego szablonu; punkt wyjścia: `templates/field_map.example.json`).
 
 ## Procedura
 
@@ -49,7 +49,7 @@ Szczegóły formularza, podstawa prawna i struktura pól: **`references/PB-5.md`
 
 1. Sprawdź, czy szablon ma pola AcroForm:
    ```bash
-   python scripts/inspect_fields.py templates/PB-5.pdf
+   python scripts/inspect_fields.py "Warsztat Architekta/Wzory/GUNB/PB-5.pdf"
    ```
    - Jeśli wypisze listę pól (z `stany_on` przy checkboxach) — szablon jest
      wypełnialny, przejdź dalej.
@@ -79,7 +79,7 @@ brakuje.
 ```bash
 python scripts/fill_pb5.py \
   --danet Danet.txt \
-  --template templates/PB-5.pdf \
+  --template "Warsztat Architekta/Wzory/GUNB/PB-5.pdf" \
   --field-map templates/field_map.json \
   --out out/
 ```
